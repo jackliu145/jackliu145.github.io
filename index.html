@@ -98,7 +98,7 @@
 					`;
 					tbody.appendChild(tr);
 				});
-				totalPages = data.total;
+				totalPages = data.total / pageSize;
 				// 渲染分页
 				renderPagination();
 			})
