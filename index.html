@@ -119,6 +119,7 @@
                 videoPlayer.controls = true;
                 videoPlayer.style.width = "100%";
                 videoPlayer.style.height = "auto";
+		videoPlayer.style.objectFit = "fill"; // 设置 object-fit 属性为 fill
                 const source = document.createElement("source");
                 source.src = videoUrl;
                 if (Hls.isSupported()) {
