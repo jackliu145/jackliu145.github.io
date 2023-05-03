@@ -65,7 +65,6 @@
 	<table id="imageTable">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>名称</th>
 				<th>图片</th>
 				<th>操作</th>
@@ -93,7 +92,6 @@
 				data.list.forEach(image => {
 					const tr = document.createElement("tr");
 					tr.innerHTML = `
-						<td>${image.vod_id}</td>
 						<td>${image.vod_name}</td>
 						<td><img src="${image.vod_pic}" alt="${image.vod_name}" width="100"></td>
                         <td><button onclick="playVideo('${image.vod_id}')">播放</button>
