@@ -105,26 +105,6 @@
 			.catch(error => console.error(error));
 		}
 
-        function playVideo1111(id) {
-            console.log(id);
-            fetch(`https://dsqdfsr2rkem4.cloudfront.net/api_v3/vod/detail/${id}`)
-            .then(response => response.json())
-            .then(response => {
-            const videoUrl = response.data;
-            console.log(videoUrl);
-            const videoPlayer = document.createElement("video");
-            videoPlayer.src = videoUrl.vod_play_urls[0].episode[0].url;
-            videoPlayer.controls = true;
-            videoPlayer.style.width = "100%";
-            videoPlayer.style.height = "auto";
-            console.log(videoPlayer.src);
-            const modal = createModal(videoPlayer);
-            console.log(modal);
-            document.body.appendChild(modal);
-            })
-            .catch(error => console.error(error));
-        }
-
         function playVideo(id) {
             fetch(`https://dsqdfsr2rkem4.cloudfront.net/api_v3/vod/detail/${id}`)
             .then(response => response.json())
@@ -157,8 +137,12 @@
                     console.error("HLS.js is not supported.");
                 }
                 videoPlayer.appendChild(source);
-                const modal = createModal(videoPlayer);
-                document.body.appendChild(modal);
+		const modal = createModal(videoPlayer);
+		const windowFeatures = "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=600, top=100, left=100";
+		const windowName = "videoWindow";
+		const newWindow = window.open("", windowName, windowFeatures);
+		newWindow.document.write("<html><head><title>福利小窗口</title></head><body></body></html>");
+		newWindow.document.body.appendChild(videoPlayer);
                 })
                 .catch(error => console.error(error));
         }
